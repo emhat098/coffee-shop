@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:client/models/product_model.dart';
+import 'package:client/screens/product.dart';
 import 'package:flutter/material.dart';
 
 class ProductItem extends StatelessWidget {
@@ -8,20 +11,40 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(product);
     return Card.filled(
         margin: const EdgeInsets.all(10),
-        child: SizedBox(
           child: Column(
             children: [
-              Image.network(
-                "https://picsum.photos/720/360",
-                width: 720,
-              ),
-              Text(product.title),
-              Text(product.price.toString()),
+              Row(
+                children: [
+                  Image.network(
+                    "https://picsum.photos/720/361",
+                    width: 144,
+                    fit: BoxFit.cover,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(9),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      verticalDirection: VerticalDirection.down,
+                      children: [
+                        Text(product.title),
+                        Text(product.price.toString()),
+                        ElevatedButton(
+                          child: const Text('Preview product'),
+                          onPressed: () =>
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ProductScreen(product: product)
+                            ),
+                        ))
+                      ],
+                    )
+                  )
+                ],
+             )
             ],
           ),
-        ));
+        );
   }
 }
