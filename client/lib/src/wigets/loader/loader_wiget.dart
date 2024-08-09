@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 typedef DataWidgetBuilder<T> = Widget Function(BuildContext context, T data);
 
 class LoaderFutureBuilder<T> extends StatelessWidget {
-  final Future<T> future;
+  final Future<T>? future;
   final DataWidgetBuilder<T> builder;
   final String emptyMessage;
 

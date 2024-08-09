@@ -1,27 +1,15 @@
-import 'package:client/screens/products.dart';
-import 'package:client/services/api_service.dart';
-import 'package:client/services/product_service.dart';
+import 'package:client/src/wigets/layout/home_layout.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
-  final ProductService productService =
-      ProductService(apiService: ApiService(baseUrl: 'https://dummyjson.com'));
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-          useMaterial3: true,
-        ),
-        home: ProductsScreen(productService: productService));
+    return const MaterialApp(
+      home: HomeLayout(),
+    );
   }
 }

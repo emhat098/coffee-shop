@@ -1,5 +1,5 @@
-import 'package:client/models/product_model.dart';
-import 'package:client/services/api_service.dart';
+import 'package:client/src/models/product_model.dart';
+import 'package:client/src/services/api_service.dart';
 
 class ProductService {
   final ApiService apiService;
@@ -12,6 +12,13 @@ class ProductService {
       return productJson.map((json) => Product.fromJson(json)).toList();
     });
 
+    return response;
+  }
+
+  Future<Product> fetchProductById(int id) async {
+    final response = await apiService.fetchData('/product/$id', (json) {
+      return Product.fromJson(json);
+    });
     return response;
   }
 }
